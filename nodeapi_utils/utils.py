@@ -225,9 +225,7 @@ def get_current_block(url):
         raise Exception('Failed to fetch latest block number. RPC Provider response: ' + str(json.loads(response.text)))
 
     response_data = json.loads(response.text)
-    block_number = int(response_data['result'], 0)
-
-    return block_number
+    return int(response_data['result'], 0)
 
 
 async def async_make_api_requests(url,
@@ -333,5 +331,4 @@ def create_storage_bucket(gcloud_bucket):
     """
     client = storage.Client()
     client.create_bucket(gcloud_bucket)
-    success = storage_bucket_exists(gcloud_bucket)
-    return success
+    return storage_bucket_exists(gcloud_bucket)
